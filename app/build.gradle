@@ -7,25 +7,25 @@ buildscript {
 
     dependencies {
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.4'
     }
 }
 
 
 apply plugin: 'com.android.application'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'me.tatarka.retrolambda' // ----- add
 
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.example.mkr.myapplication"
+        applicationId "com.example.mkr.jeonju_bus_android"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -44,11 +44,12 @@ android {
             proguardFile 'proguard-bean.pro'
         }
     }
-    dexOptions {
-        maxProcessCount 4 // this is the default value
-        javaMaxHeapSize "4g"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
 
 
 dependencies {
@@ -80,6 +81,7 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp-urlconnection:3.5.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
     compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
